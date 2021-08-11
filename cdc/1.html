@@ -1,0 +1,25 @@
+<html>  
+<script src="angular.js"></script>  
+<body>  
+<div ng-app="myApp" ng-controller="namesCtrl">  
+<ul>  
+  <li>
+    {{ fetchData }}  
+  </li>  
+</ul>  
+  
+</div>  
+  
+<script>  
+var app = angular.module('myApp', ['datatables']);
+
+app.controller('namesCtrl', function($scope, $http){ 
+     $scope.fetchData = function(){
+  $http.get('data.php').success(function(data){
+   $scope.namesData = data;
+  });
+ };
+</script>  
+<p>The names containing the letter "ar"</p>  
+</body>  
+</html>  
